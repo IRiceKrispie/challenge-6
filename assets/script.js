@@ -19,7 +19,7 @@ function getWeather(city){
             for (var i = 0; i < 5; i++){ //iterate 5 times because we have 5 cards
                  //first card
                 $('<li>' + "Date: " + data.list[x].dt_txt + '</li>').appendTo('#' + weatherCards.eq(i).attr('id'));
-                $('<li>' + "Temp: " + data.list[x].main.temp + '</li>').appendTo('#' + weatherCards.eq(i).attr('id'));
+                $('<li>' + "Temp: " + data.list[x].main.temp + "F" + '</li>').appendTo('#' + weatherCards.eq(i).attr('id'));
                 $('<li>' + "Windspeed: " + data.list[x].wind.speed + '</li>').appendTo('#' + weatherCards.eq(i).attr('id'));
                 $('<li>' + "Humidity: " + data.list[x].main.humidity +"%" + '</li>').appendTo('#' + weatherCards.eq(i).attr('id'));
                 x += 8;
