@@ -1,5 +1,5 @@
 function getWeather(city){
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=48&appid=bc44410118b10b4a172dcfb25048ec75&units=imperial`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=48&appid=bc44410118b10b4a172dcfb25048ec75&units=imperial`)
         .then(function(response){
             return response.json();
         })
