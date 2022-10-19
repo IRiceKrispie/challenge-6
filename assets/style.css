@@ -1,3 +1,14 @@
 #box{
     border: solid red 3px;
 }
+
+.box{
+    border: solid red 3px;
+}
+ul{
+    list-style: none;
+}
+
+li{
+    list-style: none;
+}
