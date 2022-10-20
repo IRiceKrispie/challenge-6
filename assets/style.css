@@ -2,8 +2,11 @@
     border: solid red 3px;
 }
 
-.box{
-    border: solid red 3px;
+.weather-day{
+    background-color: blue;
+    color: white;
+    margin: 2px;
+    width: 312px;
 }
 ul{
     list-style: none;

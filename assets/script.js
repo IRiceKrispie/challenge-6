@@ -18,8 +18,9 @@ function getWeather(city){
             var weatherCards = $('.weather-day'); //get every card with a weather-day class
             for (var i = 0; i < 5; i++){ //iterate 5 times because we have 5 cards
                  //first card
+                var icon = ("<img src='http://openweathermap.org/img/w/" + data.list[x].weather[0].icon + ".png'>");
                 $('<li>' + "Date: " + data.list[x].dt_txt + '</li>').appendTo('#' + weatherCards.eq(i).attr('id'));
-                $('<li>' + "Temp: " + data.list[x].main.temp + "F" + '</li>').appendTo('#' + weatherCards.eq(i).attr('id'));
+                $('<li>' + "Temp: " + data.list[x].main.temp + "F" + icon + '</li>').appendTo('#' + weatherCards.eq(i).attr('id'));
                 $('<li>' + "Windspeed: " + data.list[x].wind.speed + '</li>').appendTo('#' + weatherCards.eq(i).attr('id'));
                 $('<li>' + "Humidity: " + data.list[x].main.humidity +"%" + '</li>').appendTo('#' + weatherCards.eq(i).attr('id'));
                 x += 8;
@@ -29,9 +30,7 @@ function getWeather(city){
         })
 }
 
-
 $('#citySearch').on("click", function(){
     var cityInput = $('#userInput').val();
     getWeather(cityInput);
 })
-
