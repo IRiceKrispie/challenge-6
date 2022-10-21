@@ -1,5 +1,6 @@
 function getWeather(city){
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=48&appid=bc44410118b10b4a172dcfb25048ec75&units=imperial`)
+    var apiCall = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=48&appid=bc44410118b10b4a172dcfb25048ec75&units=imperial`;
+    fetch(apiCall)
         .then(function(response){
             return response.json();
         })
@@ -9,7 +10,6 @@ function getWeather(city){
             var icon = ("<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>");
             $('#city-name').text(data.city.name);
             $('#city-name').append(icon);
-            console.log(data.list[0].main.temp);
             var weatherinfo = [moment(data.list[0].dt_txt).format("M/D/YY"), data.list[0].main.temp,data.list[0].wind.speed, data.list[0].main.humidity];
             for (var i = 0; i < 4; i++){
                 $('<li>' + `${weatherinfo[i]}` + '</li>').appendTo('#info');
@@ -30,17 +30,19 @@ function getWeather(city){
             }
             /////////////////////////////////////////////////////////////////////////////////////
             //add city to list
-            $('<button class="city-button">' + data.city.name + '</button>').appendTo('#saved-searches');
+            $('<button type="button" class="city-button">' + data.city.name + '</button>').appendTo('#saved-searches');
+            localStorage.setItem(data.city.name, apiCall);
             //use those buttons for something!
-            
+            $('.city-button').on("click", function(event){
+                event.stopImmediatePropagation();
+                console.log(localStorage.getItem($(this)[0].innerText));
+            })
+            //////////////////////////////////////////////////////////////////////////////////////////////////////
         })
 }
-
+///////////////////////////////////////////////////////
 $('#citySearch').on("click", function(){
     var cityInput = $('#userInput').val();
     getWeather(cityInput);
 })
 
-$('.city-button').on("click", function(){
-    console.log("Hello");
-})
