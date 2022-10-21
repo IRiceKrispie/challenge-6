@@ -2,6 +2,9 @@ const cityNames = []; //used to verify if a city is already in the list
 function getWeather(apiCall){
     fetch(apiCall)
         .then(function(response){
+            if (response.status === 404){
+                $('#city-name').text("Invalid City, Try again");
+            }
             return response.json();
         })
         .then(function(data){
@@ -85,4 +88,3 @@ $('#citySearch').on("click", function(){
     
     getWeather(apiCall);
 })
-
