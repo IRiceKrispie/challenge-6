@@ -1,14 +1,25 @@
+const cityNames = []; //used to verify if a city is already in the list
 function getWeather(apiCall){
     fetch(apiCall)
         .then(function(response){
             return response.json();
         })
         .then(function(data){
-            console.log(data);
+            ///////////////////////////////////////
+
+            if (cityNames.length === 0){
+                $('<button type="button" class="city-button">' + data.city.name + '</button>').appendTo('#saved-searches');//add city to list
+                cityNames.push(data.city.name);
+            }
+            else if (cityNames.length > 0 && (cityNames.includes(data.city.name)== false)){
+                $('<button type="button" class="city-button">' + data.city.name + '</button>').appendTo('#saved-searches');//add city to list
+                cityNames.push(data.city.name);
+            }
+        
+            
             //////////////////////////////////////
             var icon = ("<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>");
             $('#city-name').text(data.city.name);
-            console.log($('#city-name')[0].innerText);
             $('#city-name').append(icon);
             ////////////////////////////////////////////////////////
             //create weather cards
@@ -36,8 +47,7 @@ function getWeather(apiCall){
                 x += 8;
             }
             /////////////////////////////////////////////////////////////////////////////////////
-            //add city to list
-            $('<button type="button" class="city-button">' + data.city.name + '</button>').appendTo('#saved-searches');
+            
             localStorage.setItem(data.city.name, apiCall); //save api call to local storage
             //use those buttons for something!
             $('.city-button').on("click", function(event){
@@ -71,6 +81,8 @@ $('#citySearch').on("click", function(){
             $(this).remove();
         })
         $('#city-name').text("");
+
+    
     getWeather(apiCall);
 })
 
