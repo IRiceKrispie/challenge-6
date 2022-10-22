@@ -4,6 +4,7 @@ function getWeather(apiCall){
         .then(function(response){
             if (response.status === 404){
                 $('#city-name').text("Invalid City, Try again");
+                $('#forcast-text').text("");
             }
             return response.json();
         })
@@ -18,12 +19,7 @@ function getWeather(apiCall){
                 $('<button type="button" class="city-button">' + data.city.name + '</button>').appendTo('#saved-searches');//add city to list
                 cityNames.push(data.city.name);
             }
-        
-            
             //////////////////////////////////////
-            var icon = ("<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>");
-            $('#city-name').text(data.city.name);
-            $('#city-name').append(icon);
             ////////////////////////////////////////////////////////
             //create weather cards
             for (var i = 0; i < 5; i++){
@@ -31,10 +27,15 @@ function getWeather(apiCall){
             }
             ////////////////////////////////////////////////////
             //populate top info
-            var weatherinfo = [moment(data.list[0].dt_txt).format("M/D/YY"), data.list[0].main.temp,data.list[0].wind.speed, data.list[0].main.humidity];
-            for (var i = 0; i < 4; i++){
-                $('<li class="main-info">' + `${weatherinfo[i]}` + '</li>').appendTo('#info');
-            }
+            var icon = ("<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>");
+            $('#city-name').text(data.city.name);
+            $('#city-name').append(icon);
+            $('<li class="main-info">' + "Time: " + moment(data.list[0].dt_txt).format("M/D/YY") + '</li>').appendTo('#info');
+            $('<li class="main-info">' + "Temp: " + data.list[0].main.temp + "F" + '</li>').appendTo('#info');
+            $('<li class="main-info">' + "Windspeed: "+ data.list[0].wind.speed + "MPH" + '</li>').appendTo('#info');
+            $('<li class="main-info">' + "Humidity: " + data.list[0].main.humidity + "%" + '</li>').appendTo('#info');
+
+            $('#forcast-text').text(data.city.name + " 5 day forecast.");
             /////////////////////////////////////////////////////////////
             //populate weather cards
             var x = 2;

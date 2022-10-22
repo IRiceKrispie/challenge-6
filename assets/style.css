@@ -1,5 +1,5 @@
 .weather-day{
-    background-color: var(--bs-success);
+    background-color: var(--bs-gray-dark);
     color: white;
     margin: 2px;
     width: 312px;
@@ -12,6 +12,10 @@
 #city-name{
     font: 5rem/1.5 var(--bs-font-sans-serif);
     color: var(--bs-danger);
+}
+#city-name img{
+    height: 100px;
+    width: auto;
 }
 
 #info{
