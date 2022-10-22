@@ -1,12 +1,26 @@
-#box{
-    border: solid red 3px;
-}
-
 .weather-day{
-    background-color: blue;
+    background-color: var(--bs-success);
     color: white;
     margin: 2px;
     width: 312px;
+}
+
+.header{
+    
+}
+
+#city-name{
+    font: 5rem/1.5 var(--bs-font-sans-serif);
+    color: var(--bs-danger);
+}
+
+#info{
+    font: 2rem/1.5 var(--bs-font-sans-serif);
+}
+
+.page{
+    background-color: var(--bs-cyan);
+    height: 100vh;
 }
 ul{
     list-style: none;
