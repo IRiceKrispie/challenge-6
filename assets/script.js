@@ -31,7 +31,7 @@ function getWeather(apiCall){
             $('#city-name').text(data.city.name);
             $('#city-name').append(icon);
             $('<li class="main-info">' + "Date: " + moment(data.list[0].dt_txt).format("M/D/YY") + '</li>').appendTo('#info');
-            $('<li class="main-info">' + "Temp: " + data.list[0].main.temp + "F" + '</li>').appendTo('#info');
+            $('<li class="main-info">' + "Temp: " + data.list[0].main.temp + "&#8457;" + '</li>').appendTo('#info');
             $('<li class="main-info">' + "Windspeed: "+ data.list[0].wind.speed + "MPH" + '</li>').appendTo('#info');
             $('<li class="main-info">' + "Humidity: " + data.list[0].main.humidity + "%" + '</li>').appendTo('#info');
 
@@ -45,7 +45,7 @@ function getWeather(apiCall){
                 var icon = ("<img src='http://openweathermap.org/img/w/" + data.list[x].weather[0].icon + ".png'>");
                 var time = moment(data.list[x].dt_txt).format("M/D/YY");
                 $('<li>' + "Date: " + time + '</li>').appendTo(weatherCards.eq(i));
-                $('<li>' + "Temp: " + data.list[x].main.temp + "F" + icon + '</li>').appendTo(weatherCards.eq(i));
+                $('<li>' + "Temp: " + data.list[x].main.temp + "&#8457;" + icon + '</li>').appendTo(weatherCards.eq(i));
                 $('<li>' + "Windspeed: " + data.list[x].wind.speed + '</li>').appendTo(weatherCards.eq(i));
                 $('<li>' + "Humidity: " + data.list[x].main.humidity +"%" + '</li>').appendTo(weatherCards.eq(i));
                 x += 8;
