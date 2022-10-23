@@ -30,7 +30,7 @@ function getWeather(apiCall){
             var icon = ("<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>");
             $('#city-name').text(data.city.name);
             $('#city-name').append(icon);
-            $('<li class="main-info">' + "Time: " + moment(data.list[0].dt_txt).format("M/D/YY") + '</li>').appendTo('#info');
+            $('<li class="main-info">' + "Date: " + moment(data.list[0].dt_txt).format("M/D/YY") + '</li>').appendTo('#info');
             $('<li class="main-info">' + "Temp: " + data.list[0].main.temp + "F" + '</li>').appendTo('#info');
             $('<li class="main-info">' + "Windspeed: "+ data.list[0].wind.speed + "MPH" + '</li>').appendTo('#info');
             $('<li class="main-info">' + "Humidity: " + data.list[0].main.humidity + "%" + '</li>').appendTo('#info');
