@@ -11,3 +11,7 @@ Weather Dashboard
 ![start-screen](./assets/images/startscreen.png)
 ![5 day forecast with search history](./assets/images/withSearchHistory.png)
 ![error message](./assets/images/errorMessage.png)
+
+## Links
+* Github: https://github.com/IRiceKrispie/challenge-6
+* Pages: https://iricekrispie.github.io/challenge-6/
